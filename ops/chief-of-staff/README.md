@@ -15,20 +15,18 @@ chief-of-staff/
 ├── skills/
 │   ├── inbox-triage/
 │   │   └── SKILL.md          # triage procedure; fires when sorting inbox/messages
-│   ├── scheduling/
-│   │   └── SKILL.md          # calendar procedure; fires on scheduling requests
-│   └── project-management/
-│       └── SKILL.md          # status views, initiative breakdowns, reviews, chasing
+│   └── scheduling/
+│       └── SKILL.md          # calendar procedure; fires on scheduling requests
 └── tasks/
     ├── morning-executive-brief.md  # weekdays at 08:00 — brief format lives in the prompt
     └── meeting-action-items.md      # weekdays at 17:30
 ```
 
 The layout mirrors the researched pillars of the role: email → `inbox-triage`,
-calendar → `scheduling`, projects → `project-management`. For projects the split
-matters: the always-on running list stays in memory (it has no trigger — it's every
-session), while the skill covers the scenario-shaped deliverables on top of it —
-status views, initiative breakdowns, reviews.
+calendar → `scheduling`. Projects ship with no skill on purpose: the always-on
+running list stays in memory (it has no trigger — it's every session), and the
+scenario-shaped deliverables on top of it — status views, initiative breakdowns,
+reviews — are skills the agent grows once they recur.
 
 ## Memory
 
@@ -97,9 +95,9 @@ A `SKILL.md` earns its folder only when all three hold:
 
 Otherwise the content belongs in `context/instructions.md` (a line or two), or — for
 cron-triggered deliverables — directly in the task prompt, which is what actually
-fires. This template ships three skills (`inbox-triage`, `scheduling`,
-`project-management`) as the pattern to imitate; the agent grows the rest. All three
-share the same cascade: reuse the organization the principal already has; otherwise
-propose with a preview and commit only on approval. What a skill learns is not bundled
+fires. This template ships two skills (`inbox-triage`, `scheduling`) as the pattern
+to imitate; the agent grows the rest. Both share the same cascade: reuse the
+organization the principal already has; otherwise propose with a preview and commit
+only on approval. What a skill learns is not bundled
 with the skill — it lives in `memory/`, so the fixed procedure and the learned state
 stay separate.
